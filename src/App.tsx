@@ -11,9 +11,11 @@ async function sayHello() {
 }
 
 function App() {
-  <>
-    <button onClick={sayHello}>Click Me</button>
-  </>;
+  return (
+    <>
+      <button onClick={sayHello}>Click Me</button>
+    </>
+  );
 }
 
 export default App;
