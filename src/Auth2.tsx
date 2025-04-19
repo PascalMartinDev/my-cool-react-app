@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Authenticator } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css";
-import { fetchUserAttributes } from "aws-amplify/auth/server";
+import { fetchUserAttributes, getCurrentUser } from "aws-amplify/auth";
 import { useEffect } from "react";
 
 export function Auth() {
@@ -24,6 +24,7 @@ function UserDetails() {
 
   useEffect(() => {
     async function getUserData() {
+      const currentUser = await getCurrentUser();
       const userData = await fetchUserAttributes();
       setNickName(userData.nickname);
     }
