@@ -6,4 +6,8 @@ export const sayHello = defineFunction({
   bundling: {
     minify: false,
   },
+  environment: {
+    REGION,
+    TABLE_NAME,
+  },
 });
