@@ -1,16 +1,15 @@
-//import { useState } from "react";
 import { Authenticator } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css";
-//import { fetchUserAttributes } from "aws-amplify/auth";
-//import { useEffect } from "react";
+import { fetchUserAttributes } from "aws-amplify/auth";
+import { useEffect, useState } from "react";
 
 export function Auth() {
   return (
     <div>
-      <Authenticator>
-        {({ signOut, user }) => (
+      <Authenticator signUpAttributes={["nickname"]}>
+        {({ signOut }) => (
           <main>
-            <h1>Welcome Back {user?.username}</h1>
+            <UserDetails />
             <button onClick={signOut}>Sign out</button>
           </main>
         )}
@@ -19,7 +18,6 @@ export function Auth() {
   );
 }
 
-/*
 function UserDetails() {
   const [nickName, setNickName] = useState<string>();
 
@@ -33,8 +31,7 @@ function UserDetails() {
 
   return (
     <div>
-      <h1>Hello {nickName} and Welcome!</h1>
+      <h1> Hello {nickName}</h1>
     </div>
   );
 }
-*/
