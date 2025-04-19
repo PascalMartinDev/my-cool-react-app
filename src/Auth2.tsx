@@ -32,7 +32,7 @@ function UserDetails() {
 
   return (
     <div>
-      <h1>Hello {nickName}</h1>
+      <h1>Hello {nickName} and Welcome!</h1>
     </div>
   );
 }
