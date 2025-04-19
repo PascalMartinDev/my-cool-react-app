@@ -8,9 +8,9 @@ export function Auth() {
   return (
     <div>
       <Authenticator>
-        {({ signOut }) => (
+        {({ signOut, user }) => (
           <main>
-            <h1>Welcome Back</h1>
+            <h1>Welcome Back {user?.username}</h1>
             <button onClick={signOut}>Sign out</button>
           </main>
         )}
