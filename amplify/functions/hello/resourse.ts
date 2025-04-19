@@ -1,5 +1,8 @@
 import { defineFunction } from "@aws-amplify/backend";
 
+export const REGION = "ap-southeast-2";
+export const TABLE_NAME = "products";
+
 export const sayHello = defineFunction({
   name: "sayHello",
   entry: "./handler.ts",
