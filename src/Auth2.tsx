@@ -1,17 +1,38 @@
+import { useState } from "react";
 import { Authenticator } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css";
+import { fetchUserAttributes } from "aws-amplify/auth/server";
+import { useEffect } from "react";
 
 export function Auth() {
   return (
     <div>
       <Authenticator signUpAttributes={["nickname"]}>
-        {({ signOut, user }) => (
+        {({ signOut }) => (
           <main>
-            <h1>Hello {user?.username}</h1>
+            <UserDetails />
             <button onClick={signOut}>Sign out</button>
           </main>
         )}
       </Authenticator>
+    </div>
+  );
+}
+
+function UserDetails() {
+  const [nickName, setNickName] = useState<string>();
+
+  useEffect(() => {
+    async function getUserData() {
+      const userData = await fetchUserAttributes();
+      setNickName(userData.nickname);
+    }
+    getUserData();
+  }, []);
+
+  return (
+    <div>
+      <h1>Hello {nickName}</h1>
     </div>
   );
 }
